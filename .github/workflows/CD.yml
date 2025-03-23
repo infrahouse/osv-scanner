@@ -37,7 +37,7 @@ jobs:
             - name: Install dependencies
               run: |
                 make bootstrap
-                sudo apt-get -y install reprepro gpg s3fs
+                sudo apt-get -y install reprepro gpg s3fs infrahouse-toolkit
 
             - name: Configure AWS Credentials
               uses: aws-actions/configure-aws-credentials@v2
