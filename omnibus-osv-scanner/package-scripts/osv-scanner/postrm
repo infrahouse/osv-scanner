@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Perform necessary osv-scanner removal steps
+# after package is uninstalled.
+#
+
+echo "osv-scanner has been uninstalled!"
+
+exit 0
