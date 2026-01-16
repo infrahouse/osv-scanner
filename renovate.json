@@ -1,34 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "timezone": "Australia/Sydney",
-  "schedule": ["before 6am on monday"],
-  "labels": ["dependencies"],
-  "postUpdateOptions": ["gomodTidy"],
-  "osvVulnerabilityAlerts": true,
-  "lockFileMaintenance": { "enabled": true },
+  "extends": [
+    "config:recommended"
+  ],
+  "prConcurrentLimit": 1,
+  "rebaseWhen": "conflicted",
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
-      "groupName": "Major Updates",
-      "enabled": true
-    },
-    {
-      "matchLanguages": ["golang"],
-      "groupName": "osv-scanner minor"
-    },
-    {
-      "matchFileNames": [".github/**"],
-      "groupName": "workflows"
-    },
-    {
-      "matchDepTypes": ["golang"],
+      "matchManagers": ["github-actions"],
+      "matchFileNames": [
+        ".github/workflows/terraform-CI.yml",
+        ".github/workflows/terraform-CD.yml",
+        ".github/workflows/vuln-scanner-pr-public.yml",
+        ".github/workflows/vuln-scanner-pr-private.yml",
+        ".github/workflows/vuln-scanner-pr.yml",
+        ".github/workflows/terraform-review.yml",
+        ".github/workflows/docs.yml",
+        ".github/workflows/release.yml"
+      ],
       "enabled": false
     }
-  ],
-  "constraints": {
-    "go": "1.23"
-  },
-  "ignorePaths": ["**/fixtures/**", "**/fixtures-go/**"],
-  "ignoreDeps": ["golang.org/x/vuln"]
+  ]
 }
